@@ -21,9 +21,9 @@ RUN adduser -h /app glzjin -D && \
 	apk add --update redis && \
   rm -rf /var/cache/apk/* && \
   mkdir /data && \
-  chown -R glzjin:glzjin /data && \
-  chown -R glzjin:glzjin /var/lib/redis && \
-  sed -i 's#redis:/bin/false#redis:/sbin/nologin#i' /etc/passwd && \
+  chown -R redis:redis /data && \
+  chown -R redis:redis /var/lib/redis && \
+  sed -i 's#redis:/bin/false#redis:/bin/sh#i' /etc/passwd && \
   sed -i 's#logfile /var/log/redis/redis.log#logfile ""#i' /etc/redis.conf && \
   sed -i 's#daemonize yes#daemonize no#i' /etc/redis.conf && \
   sed -i 's#dir /var/lib/redis/#dir /data#i' /etc/redis.conf && \
