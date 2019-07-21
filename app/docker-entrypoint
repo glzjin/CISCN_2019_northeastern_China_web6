@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [[ -f /flag.sh ]]; then
+	source /flag.sh
+fi
+
+su - redis -c "/usr/bin/redis-server /etc/redis.conf" > /dev/null 2>&1  & 
+su - glzjin -c "python /app/run.py"
+tail -F /dev/null
